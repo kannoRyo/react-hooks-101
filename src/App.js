@@ -1,7 +1,11 @@
-import React , {useState} from 'react'
+import React , {useEffect, useState} from 'react'
 
 const App = () => {
   const [state, setState] = useState(multiState)
+
+  useEffect(() =>{
+    console.log('useEffect')
+  })
 
   const increaseMoney = () => {
     setState({
