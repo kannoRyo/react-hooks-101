@@ -23,6 +23,17 @@ const App = () => {
     setBody('')
 
   }
+
+  const deleteAllEvent = (e) =>{
+    if(!window.confirm('Do you realy delete all events?')){
+      return
+    }
+
+    e.preventDefault();
+    dispatch({
+      type: 'DELETE_ALL_EVENTS',
+    })
+  }
   
   return (
     <>
@@ -39,8 +50,8 @@ const App = () => {
         </div>
       </form>
 
-      <button className="btn btn-primary" onClick={addEvent}>Create Event</button>
-      <button className="btn btn-danger">Delete Event</button>
+      <button className="btn btn-primary" onClick={addEvent} disabled={title === '' || body === ''}>Create Event</button>
+      <button className="btn btn-danger" onClick={deleteAllEvent} disabled={!(state.length)}>Delete All Event</button>
 
       <h4>Events List</h4>
       <table className="table table-hover">

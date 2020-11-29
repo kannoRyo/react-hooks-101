@@ -2,6 +2,10 @@ import React from 'react'
 
 const Event = ({event, dispatch}) => {
     const deleteEvent = (e) =>{
+        if(!window.confirm(`Do you realy delete this event? (id=${event.id})`)){
+            return
+        }
+                  
         e.preventDefault()
 
         dispatch({
