@@ -1,5 +1,6 @@
 import React ,{useReducer,useState} from 'react'
 import reducer from '../reducers'
+import Event from './Event'
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer,[])
@@ -18,9 +19,11 @@ const App = () => {
       body
     }) 
 
+    setTitle('')
+    setBody('')
+
   }
   
-  console.log({state})
   return (
     <>
     <div className="container-fluid">
@@ -50,6 +53,9 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
+          {
+            state.map((event, index) => {return(<Event event={event} dispatch={dispatch} key={index} />)}) 
+          }
         </tbody>
       </table>
     </div>
