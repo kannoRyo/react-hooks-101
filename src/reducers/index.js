@@ -1,4 +1,4 @@
-const { useReducer } = require("react");
+import { useReducer } from "react"
 
 const events = (state=[]. action) => {
     switch(action.type){
