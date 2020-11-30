@@ -1,8 +1,11 @@
-import React from 'react'
+import React ,{useContext}from 'react'
 
 import {DELETE_EVENT} from '../actions/index'
+import AppContext from '../context/AppContext'
 
-const Event = ({event, dispatch}) => {
+const Event = ({event}) => {
+    const {dispatch} = useContext(AppContext)
+
     const deleteEvent = (e) =>{
         if(!window.confirm(`Do you realy delete this event? (id=${event.id})`)){
             return
