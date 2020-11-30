@@ -39,11 +39,11 @@ const EventForm = () =>{
     }
   
     const deleteAllEvent = (e) =>{
+      e.preventDefault();
       if(!window.confirm('Do you realy delete all events?')){
         return
       }
   
-      e.preventDefault();
       dispatch({
         type: DELETE_ALL_EVENTS,
       })
@@ -56,11 +56,11 @@ const EventForm = () =>{
     }
 
     const deleteAllLog = (e) =>{
+      e.preventDefault()
       if(!window.confirm('Do you realy delete all logs?')){
         return
       }
-      e.preventDefault()
-
+      
       dispatch({
         type: DELETE_ALL_OPERATION_LOGS,
         description: 'Delete all logs',
