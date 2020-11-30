@@ -54,6 +54,19 @@ const EventForm = () =>{
         operatedAt: timeCurrentIso8601()
       })      
     }
+
+    const deleteAllLog = (e) =>{
+      if(!window.confirm('Do you realy delete all logs?')){
+        return
+      }
+      e.preventDefault()
+
+      dispatch({
+        type: DELETE_ALL_OPERATION_LOGS,
+        description: 'Delete all logs',
+        operatedAt: timeCurrentIso8601()
+      })
+    }
     return(
     <>
         <h4>Form for Creating Event</h4>
@@ -68,7 +81,8 @@ const EventForm = () =>{
         </div>
 
         <button className="btn btn-primary" onClick={addEvent} disabled={title === '' || body === ''}>Create Event</button>
-        <button className="btn btn-danger" onClick={deleteAllEvent} disabled={!(state.events.length)}>Delete All Event</button>
+        <button className="btn btn-danger" onClick={deleteAllEvent} disabled={!(state.events.length)}>Delete All Events</button>
+        <button className="btn btn-danger" onClick={deleteAllLog} disabled={!(state.operationLogs.length)}>Delete All Logs</button>
         </form>
     </>
     )
