@@ -1,22 +1,22 @@
 import React , {useState,useContext}from 'react'
-import AppContext from '../context/AppContext'
 
 import {
   CREATE_EVENT,
   DELETE_ALL_EVENTS
 } from '../actions/index'
+import AppContext from '../context/AppContext'
 
 const EventForm = () =>{
+    const {state, dispatch} = useContext(AppContext)
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-    const {state, dispatch} = useContext(AppContext)
+
+    console.log(state)
+    console.log(state.events)
   
     const addEvent = (e) =>{
       e.preventDefault()
-  
-      console.log(title)
-      console.log(body)
-  
+
       dispatch({
         type: CREATE_EVENT,
         title,
@@ -50,10 +50,10 @@ const EventForm = () =>{
         <label htmlFor="formEventBody">Body</label>
         <input type="text" class="form-control"　id="formEventBody" value={body}  onChange={e => setBody(e.target.value)}/>
         </div>
-        </form>
 
         <button className="btn btn-primary" onClick={addEvent} disabled={title === '' || body === ''}>Create Event</button>
-        <button className="btn btn-danger" onClick={deleteAllEvent} disabled={!(state.length)}>Delete All Event</button>
+        <button className="btn btn-danger" onClick={deleteAllEvent} disabled={!(state.events.length)}>Delete All Event</button>
+        </form>
     </>
     )
 }
