@@ -1,5 +1,10 @@
 import React , {useState}from 'react'
 
+import {
+  CREATE_EVENT,
+  DELETE_ALL_EVENTS
+} from '../actions/index'
+
 const EventForm = ({state,dispatch}) =>{
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
@@ -11,10 +16,10 @@ const EventForm = ({state,dispatch}) =>{
       console.log(body)
   
       dispatch({
-        type: 'CREATE_EVENT',
+        type: CREATE_EVENT,
         title,
         body
-      }) 
+      })
   
       setTitle('')
       setBody('')
@@ -28,7 +33,7 @@ const EventForm = ({state,dispatch}) =>{
   
       e.preventDefault();
       dispatch({
-        type: 'DELETE_ALL_EVENTS',
+        type: DELETE_ALL_EVENTS,
       })
     }
     return(

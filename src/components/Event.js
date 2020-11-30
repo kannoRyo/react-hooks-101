@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {DELETE_EVENT} from '../actions/index'
+
 const Event = ({event, dispatch}) => {
     const deleteEvent = (e) =>{
         if(!window.confirm(`Do you realy delete this event? (id=${event.id})`)){
@@ -9,7 +11,7 @@ const Event = ({event, dispatch}) => {
         e.preventDefault()
 
         dispatch({
-            type: 'DELETE_EVENT',
+            type: DELETE_EVENT,
             id: event.id
         })
     }
